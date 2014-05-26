@@ -10,3 +10,4 @@ Upcoming:
 - Smarter compilation (understand imports)
 - Sass 3.3 support
 - Intellisense Enhancements (custom functions, etc)
+- Feature parity overall with original SassyStudio
