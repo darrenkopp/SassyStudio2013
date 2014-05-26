@@ -4,12 +4,15 @@
     <Identity Id="SassyStudio.2013" Version="0.1.0.0" Language="en-US" Publisher="Darren Kopp" />
     <DisplayName>SassyStudio 2013</DisplayName>
     <Description xml:space="preserve">Provides extended sass / scss support for Visual Studio 2013</Description>
+    <MoreInfo>https://github.com/darrenkopp/SassyStudio2013</MoreInfo>
+    <GettingStartedGuide>https://github.com/darrenkopp/SassyStudio2013/releases</GettingStartedGuide>
+    <ReleaseNotes>https://github.com/darrenkopp/SassyStudio2013/releases</ReleaseNotes>
     <Tags>sass scss compass libsass</Tags>
   </Metadata>
   <Installation>
-    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[13.0]" />
-    <InstallationTarget Version="[13.0]" Id="Microsoft.VisualStudio.Premium" />
-    <InstallationTarget Version="[13.0]" Id="Microsoft.VisualStudio.Ultimate" />
+    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[13.0)" />
+    <InstallationTarget Version="[13.0)" Id="Microsoft.VisualStudio.Premium" />
+    <InstallationTarget Version="[13.0)" Id="Microsoft.VisualStudio.Ultimate" />
   </Installation>
   <Dependencies>
     <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
