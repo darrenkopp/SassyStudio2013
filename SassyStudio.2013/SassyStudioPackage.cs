@@ -48,9 +48,7 @@ namespace SassyStudio
         static void LogInitialization(OptionsProvider options)
         {
             Logger.Log("Sassy studio initializing.", true);
-            Logger.Log("ComplationIncludePaths = " + options.Scss.CompilationIncludePaths);
             Logger.Log("CssGenerationOutputDirectory = " + options.Scss.CssGenerationOutputDirectory);
-            Logger.Log("EnableExperimentalIntellisense = " + options.Scss.EnableExperimentalIntellisense);
             Logger.Log("GenerateCssOnSave = " + options.Scss.GenerateCssOnSave);
             Logger.Log("GenerateMinifiedCssOnSave = " + options.Scss.GenerateMinifiedCssOnSave);
             Logger.Log("IncludeCssInProject = " + options.Scss.IncludeCssInProject);

@@ -192,9 +192,7 @@
       <HintPath>..\packages\YUICompressor.NET.2.4.0.0\lib\NET20\Yahoo.Yui.Compressor.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SCSS\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="VSPackage.resx">
       <SubType>Designer</SubType>
