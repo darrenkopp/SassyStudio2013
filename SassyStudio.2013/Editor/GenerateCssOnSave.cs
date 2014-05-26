@@ -16,7 +16,7 @@ using Yahoo.Yui.Compressor;
 namespace SassyStudio.Editor
 {
     [Export(typeof(IWpfTextViewCreationListener))]
-    [ContentType("SCSS")]
+    [ContentType(Microsoft.Web.Editor.ScssContentTypeDefinition.ScssContentType)]
     [TextViewRole(PredefinedTextViewRoles.Document)]
     class GenerateCssOnSave : IWpfTextViewCreationListener
     {
