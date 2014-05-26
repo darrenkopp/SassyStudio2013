@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
-using Microsoft.Web.Editor;
 using SassyStudio.Compilation;
 using SassyStudio.Integration.Compass;
 using SassyStudio.Integration.LibSass;
@@ -17,7 +16,7 @@ using Yahoo.Yui.Compressor;
 namespace SassyStudio.Editor
 {
     [Export(typeof(IWpfTextViewCreationListener))]
-    [ContentType(ScssContentTypeDefinition.ScssContentType)]
+    [ContentType("SCSS")]
     [TextViewRole(PredefinedTextViewRoles.Document)]
     class GenerateCssOnSave : IWpfTextViewCreationListener
     {
