@@ -18,7 +18,7 @@ namespace SassyStudio.Editor
     [Export(typeof(IWpfTextViewCreationListener))]
     [ContentType(Microsoft.Web.Editor.ScssContentTypeDefinition.ScssContentType)]
     [TextViewRole(PredefinedTextViewRoles.Document)]
-    class GenerateCssOnSave : IWpfTextViewCreationListener
+    class CompileScssOnSave : IWpfTextViewCreationListener
     {
         static readonly Encoding UTF8_ENCODING = new UTF8Encoding(true);
         readonly Lazy<ScssOptions> _Options = new Lazy<ScssOptions>(() => SassyStudioPackage.Instance.Options.Scss, true);
