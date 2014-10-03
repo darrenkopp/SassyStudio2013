@@ -104,13 +104,13 @@ namespace SassyStudio.Editor
             {
                 await compiler.CompileAsync(document, output);
 
-                // minify
-                if (Options.GenerateMinifiedCssOnSave && output != null)
-                    Minify(File.ReadAllText(output.FullName), new FileInfo(Path.Combine(output.Directory.FullName, filename + ".min.css")));
-
                 // add to project
                 if (Options.IncludeCssInProject && output != null && string.IsNullOrWhiteSpace(Options.CssGenerationOutputDirectory))
                     AddFileToProject(source, output, Options);
+
+                // minify
+                if (Options.GenerateMinifiedCssOnSave && output != null)
+                    Minify(output, new FileInfo(Path.Combine(output.Directory.FullName, filename + ".min.css")));
             }
             catch (Exception ex)
             {
@@ -135,13 +135,14 @@ namespace SassyStudio.Editor
             return new LibSassNetDocumentCompiler(Options);
         }
 
-        private void Minify(string css, FileInfo file)
+        private void Minify(FileInfo source, FileInfo file)
         {
             if (Options.IsDebugLoggingEnabled)
                 Logger.Log("Generating minified css file.");
 
             try
             {
+                var css = File.ReadAllText(source.FullName);
                 string minified = "";
                 if (!string.IsNullOrEmpty(css))
                 {
@@ -151,6 +152,8 @@ namespace SassyStudio.Editor
 
                 InteropHelper.CheckOut(file.FullName);
                 File.WriteAllText(file.FullName, minified, UTF8_ENCODING);
+
+                AddFileToProject(source, file, Options);
             }
             catch (Exception ex)
             {
