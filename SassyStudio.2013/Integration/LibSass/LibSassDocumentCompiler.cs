@@ -42,7 +42,7 @@ namespace SassyStudio.Integration.LibSass
             if (!string.IsNullOrWhiteSpace(Options.CompilationIncludePaths) && Directory.Exists(Options.CompilationIncludePaths))
                 includePaths = includePaths.Concat(Options.CompilationIncludePaths.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries));
 
-            var result = Compiler.CompileFile(source.FullName, sourceMapPath: output.Name + ".map", sourceComments: DetermineSourceCommentsMode(Options), additionalIncludePaths: includePaths);
+            var result = Compiler.CompileFile(source.FullName, sourceMapPath: output.Name + ".map", sourceComments: DetermineSourceCommentsMode(Options), precision: Options.Precision, additionalIncludePaths: includePaths);
             var css = result.CSS;
             var sourceMap = result.SourceMap;
             InteropHelper.CheckOut(output.FullName);
