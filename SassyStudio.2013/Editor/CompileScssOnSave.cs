@@ -153,7 +153,9 @@ namespace SassyStudio.Editor
                 InteropHelper.CheckOut(file.FullName);
                 File.WriteAllText(file.FullName, minified, UTF8_ENCODING);
 
-                AddFileToProject(source, file, Options);
+                // nest
+                if (Options.IncludeCssInProject)
+                    AddFileToProject(source, file, Options);
             }
             catch (Exception ex)
             {
