@@ -62,7 +62,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Compilation\IDocumentCompiler.cs" />
-    <Compile Include="Editor\GenerateCssOnSave.cs" />
+    <Compile Include="Editor\CompileScssOnSave.cs" />
     <Compile Include="Guids.cs" />
     <Compile Include="Integration\Compass\CompassDocumentCompiler.cs" />
     <Compile Include="Integration\Compass\CompassSupport.cs" />

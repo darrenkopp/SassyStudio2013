@@ -21,6 +21,7 @@ namespace SassyStudio
             GenerateSourceMaps = false;
             ReplaceCssWithException = false;
             IncludeGeneratedCodeWarning = false;
+            Precision = 5;
 
             base.LoadSettingsFromStorage();
         }
@@ -84,5 +85,10 @@ namespace SassyStudio
         [Description("When enabled, a source map file will be generated.")]
         [Category("SCSS")]
         public bool GenerateSourceMaps { get; set; }
+
+        [LocDisplayName("Precision")]
+        [Description("Determines what amount of precision to use for numbers")]
+        [Category("SCSS")]
+        public int Precision { get; set; }
     }
 }
