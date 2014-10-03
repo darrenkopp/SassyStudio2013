@@ -11,7 +11,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 namespace SassyStudio
 {
     [PackageRegistration(UseManagedResourcesOnly = true)]
-    [InstalledProductRegistration("#110", "#112", "0.1.2.0", IconResourceID = 400)]
+    [InstalledProductRegistration("#110", "#112", "0.1.3.0", IconResourceID = 400)]
     [GuidAttribute(Guids.guidSassyStudioPkgString)]
     [ProvideAutoLoad(UIContextGuids80.SolutionExists)]
     [ProvideOptionPage(typeof(ScssOptions), "Sassy Studio", "General", 101, 102, true, new[] { "CSS", "SCSS" })]
