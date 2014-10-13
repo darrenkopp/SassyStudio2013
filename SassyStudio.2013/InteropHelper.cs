@@ -83,7 +83,7 @@ namespace SassyStudio
             }
         }
 
-        static bool TryGetProjectItem(Solution solution, string path, out ProjectItem item)
+        public static bool TryGetProjectItem(Solution solution, string path, out ProjectItem item)
         {
             item = null;
 

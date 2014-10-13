@@ -4,6 +4,7 @@ using System.ComponentModel.Composition;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using EnvDTE;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
@@ -57,6 +58,9 @@ namespace SassyStudio.Editor
                 {
                     if (Options.IsDebugLoggingEnabled)
                         Logger.Log("Compiling all files referencing include file: " + filename);
+
+                    foreach (var document in ResolveRootDocumentsInProject(e.FilePath))
+                        await GenerateRootDocument(e.Time, document);
                 }
                 else
                 {
@@ -65,6 +69,36 @@ namespace SassyStudio.Editor
 
                     await GenerateRootDocument(e.Time, e.FilePath);
                 }
+            }
+        }
+
+        private IEnumerable<string> ResolveRootDocumentsInProject(string sourceFile)
+        {
+            ProjectItem sourceProjectItem;
+            if (!InteropHelper.TryGetProjectItem(SassyStudioPackage.Instance.DTE.Solution, sourceFile, out sourceProjectItem))
+                yield break;
+
+            var project = sourceProjectItem.ContainingProject;
+            foreach (var projectItem in VisitProjectItems(project.ProjectItems))
+            {
+                var path = (string)projectItem.Properties.Item("FullPath").Value;
+                var filename = Path.GetFileName(path);
+
+                // ignore anything that isn't .scss and not a root document
+                if (filename.EndsWith(".scss", StringComparison.OrdinalIgnoreCase) && !filename.StartsWith("_"))
+                    yield return path;
+            }
+        }
+
+        private IEnumerable<ProjectItem> VisitProjectItems(ProjectItems source)
+        {
+            foreach (ProjectItem item in source)
+            {
+                yield return item;
+
+                if (item.ProjectItems != null)
+                    foreach (var child in VisitProjectItems(item.ProjectItems))
+                        yield return child;
             }
         }
 
