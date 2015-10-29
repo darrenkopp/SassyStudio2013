@@ -121,7 +121,12 @@ namespace SassyStudio.Editor
 
             var source = new FileInfo(path);
             // file is stale, likely another request coming in
-            if (time < source.LastWriteTime)
+            /*
+             * Fix for Issue # 12 : https://github.com/darrenkopp/SassyStudio2013/issues/12
+             * 
+             * State file date comparision should be in UTC.
+             */
+            if (time < source.LastWriteTimeUtc)
             {
                 if (Options.IsDebugLoggingEnabled)
                     Logger.Log("Ignoring compile due to stale document.");
