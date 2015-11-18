@@ -81,8 +81,17 @@ namespace SassyStudio.Editor
             var project = sourceProjectItem.ContainingProject;
             foreach (var projectItem in VisitProjectItems(project.ProjectItems))
             {
-                var path = (string)projectItem.Properties.Item("FullPath").Value;
-                var filename = Path.GetFileName(path);
+                string path;
+                try
+                {
+                    path = (string)projectItem.Properties.Item("FullPath").Value;
+                }
+                catch (ArgumentException)
+                {
+                    continue;
+                }
+
+                var  filename = Path.GetFileName(path);
 
                 // ignore anything that isn't .scss and not a root document
                 if (filename.EndsWith(".scss", StringComparison.OrdinalIgnoreCase) && !filename.StartsWith("_"))
