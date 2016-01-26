@@ -130,7 +130,7 @@ namespace SassyStudio.Editor
 
             var source = new FileInfo(path);
             // file is stale, likely another request coming in
-            if (time < source.LastWriteTime)
+            if (time.ToLocalTime() < source.LastWriteTime)
             {
                 if (Options.IsDebugLoggingEnabled)
                     Logger.Log("Ignoring compile due to stale document.");
